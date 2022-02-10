@@ -37,8 +37,17 @@ router.post("/", async (req, res) => {
 //PUT update a blog post
 router.put("/:id", async (req, res) => {
   try {
-    const updateBlogpost = await Blog.update(req.body);
-    res.json(updateBlogpost);
+    console.log(req.body);
+    const [updatedRows] = await Blog.update(req.body, {
+      where: {
+        id: req.params.id,
+      },
+    });
+    if (updatedRows > 0) {
+      res.status(200).end();
+    } else {
+      res.status(404).end();
+    }
   } catch (err) {
     res.sendStatus(500).send(err);
   }
