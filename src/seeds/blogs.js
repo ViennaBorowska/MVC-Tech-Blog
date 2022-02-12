@@ -6,13 +6,13 @@ const blogs = [
     user_id: 1,
   },
   {
-    name: "Nuclear Power",
-    description: "Is it as bad as everybody says? What are the alternatives?",
+    title: "Nuclear Power",
+    contents: "Is it as bad as everybody says? What are the alternatives?",
     user_id: 1,
   },
   {
-    name: "Fake News!!!!",
-    description:
+    title: "Fake News!!!!",
+    contents:
       "How can we win back trust in journalism when people don't even trust the fact checkers? Argh! #savetheBBC.",
     user_id: 2,
   },
