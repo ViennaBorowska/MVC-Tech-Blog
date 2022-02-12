@@ -6,7 +6,7 @@ const session = require("express-session");
 const connectSessionSequelize = require("connect-session-sequelize");
 
 //File imports
-const routes = require("./controllers");
+const routes = require("./routes");
 const connection = require("./config/connection");
 const helpers = require("./helpers");
 

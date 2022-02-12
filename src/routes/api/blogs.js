@@ -6,7 +6,7 @@ const {
   createBlog,
   deleteBlog,
   updateBlog,
-} = require("../../controllers/api/projects");
+} = require("../../controllers/api/blogs");
 
 const router = Router();
 
