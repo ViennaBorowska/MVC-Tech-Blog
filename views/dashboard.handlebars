@@ -1,0 +1,14 @@
+{{> insideNavbar}}
+<main>
+  <div class="jumbotron text-center">
+    <h1 class="display-4">Welcome {{user.username}}</h1>
+    <hr class="my-4" />
+    <p class="lead">Here are your blogs</p>
+    <a class="btn btn-primary" href="/create-blog" role="button">Add Blog</a>
+  </div>
+  <div class="d-flex flex-row justify-content-around flex-wrap">
+    {{#each blogs as | blog |}}
+      {{> blogCard}}
+    {{/each}}
+  </div>
+</main>
