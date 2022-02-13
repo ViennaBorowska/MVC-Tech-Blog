@@ -1,27 +1,18 @@
-const users = require("./users");
-const blogs = require("./blogs");
 const connection = require("../config/connection");
-const User = require("../models/User");
-const Blog = require("../models/Blog");
+const { Blog, User } = require("../models");
+
+const seedBlogs = require("./blogsSeeds.json");
+const seedUsers = require("./usersSeeds.json");
 
 const seedAll = async () => {
-  try {
-    await connection.sync({ force: true });
+  await connection.sync({ force: true });
+  console.log("\n----- DATABASE SYNCED -----\n");
 
-    console.log("DB sync successful");
+  await User.bulkCreate(seedUsers);
+  console.log("\n----- USERS SEEDED -----\n");
 
-    const userPromises = users.map((user) => User.create(user));
-
-    await Promise.all(userPromises);
-
-    console.log("Users seeded successful");
-
-    await Blog.bulkCreate(blogs);
-
-    console.log("Blogs seeded successful");
-  } catch (error) {
-    console.log(`[ERROR]: Seed failed | ${error.message}`);
-  }
+  await Blog.bulkCreate(seedBlogs);
+  console.log("\n----- BLOGS SEEDED -----\n");
 
   process.exit(0);
 };

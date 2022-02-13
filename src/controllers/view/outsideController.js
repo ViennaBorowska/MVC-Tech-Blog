@@ -1,4 +1,4 @@
-const { Blog, Comment, User } = require("../../models");
+const { Blog, User } = require("../../models");
 
 const renderSignUp = (req, res) => {
   // render page only if user is not logged in
@@ -49,9 +49,9 @@ const renderHomePage = async (req, res) => {
       },
     ],
   });
-
+  console.log(blogsFromDB);
   const blogs = blogsFromDB.map((blog) => blog.get({ plain: true }));
-
+  console.log(blogs);
   return res.render("home", { loggedIn, blogs });
 };
 

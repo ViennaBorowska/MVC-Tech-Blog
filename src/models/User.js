@@ -13,7 +13,7 @@ User.init(
     },
     username: {
       type: DataTypes.TEXT,
-      defaultValue: 0,
+      defaultValue: null,
       allowNull: false,
     },
     email: {
