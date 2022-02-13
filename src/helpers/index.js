@@ -1,7 +1,7 @@
 const moment = require("moment");
 
 const formatDate = (createdAt, updatedAt) =>
-  moment(createdAt, updatedAt).format("M/D/YYYY HH:mm");
+  moment(createdAt, updatedAt).format("LLLL");
 
 const helpers = {
   formatDate,
