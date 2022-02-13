@@ -19,10 +19,6 @@ Blog.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    username: {
-      type: DataTypes.TEXT,
-      allowNull: false,
-    },
     user_id: {
       type: DataTypes.INTEGER,
       allowNull: false,

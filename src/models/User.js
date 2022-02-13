@@ -11,11 +11,12 @@ User.init(
       primaryKey: true,
       autoIncrement: true,
     },
+
     username: {
       type: DataTypes.TEXT,
-      defaultValue: null,
       allowNull: false,
     },
+
     email: {
       type: DataTypes.STRING,
       allowNull: false,
