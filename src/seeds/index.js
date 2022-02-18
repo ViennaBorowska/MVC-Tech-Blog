@@ -1,6 +1,5 @@
 const connection = require("../config/connection");
 const { Blog, User } = require("../models");
-
 const seedBlogs = require("./blogsSeeds.json");
 const seedUsers = require("./usersSeeds.json");
 

@@ -26,7 +26,7 @@ const renderSingleBlog = async (req, res) => {
     include: [
       {
         model: User,
-        attributes: ["username", "email", "id"],
+        attributes: ["username", "id"],
       },
     ],
   });
@@ -45,7 +45,7 @@ const renderHomePage = async (req, res) => {
     include: [
       {
         model: User,
-        attributes: ["username", "email"],
+        attributes: ["username"],
       },
     ],
   });

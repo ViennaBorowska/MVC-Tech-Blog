@@ -5,12 +5,10 @@ const logoutBtn = $("#logout-btn");
 const handleSignUp = async (event) => {
   event.preventDefault();
 
-  const username = $("#username").val();
-  const email = $("#email").val();
-  const password = $("#password").val();
+  const username = $("#username").val().trim();
+  const password = $("#password").val().trim();
 
   const payload = JSON.stringify({
-    email,
     password,
     username,
   });
