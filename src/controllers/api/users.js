@@ -5,12 +5,12 @@ const signUp = async (req, res) => {
   try {
     // get the payload
     const payload = getPayloadWithValidFieldsOnly(
-      ["username", "email", "password"],
+      ["username", "password"],
       req.body
     );
 
     // verify payload
-    if (Object.keys(payload).length !== 3) {
+    if (Object.keys(payload).length !== 2) {
       // return status 400
       console.log(`[ERROR]: Failed to sign up | Invalid fields`);
       return res.status(400).json({ error: "Failed to sign up" });
@@ -26,7 +26,6 @@ const signUp = async (req, res) => {
       req.session.user = {
         id: user.get("id"),
         username: user.get("username"),
-        email: user.get("email"),
       };
       return res.json({ message: "Successfully created user" });
     });
@@ -41,7 +40,7 @@ const login = async (req, res) => {
   try {
     // get the payload
     const payload = getPayloadWithValidFieldsOnly(
-      ["email", "password"],
+      ["username", "password"],
       req.body
     );
 
@@ -55,7 +54,7 @@ const login = async (req, res) => {
     // if ok get user by email
     const user = await User.findOne({
       where: {
-        email: payload.email,
+        username: payload.username,
       },
     });
 
@@ -80,7 +79,6 @@ const login = async (req, res) => {
       req.session.user = {
         id: user.get("id"),
         username: user.get("username"),
-        email: user.get("email"),
       };
       return res.json({ message: "Successfully created user" });
     });

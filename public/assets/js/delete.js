@@ -12,7 +12,7 @@ const handleDeleteBlog = async (event) => {
   });
 
   if (response.ok) {
-    window.location.replace("/profile");
+    window.location.replace("/dashboard");
   } else {
     alert("Failed to delete project");
   }

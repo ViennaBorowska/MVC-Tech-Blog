@@ -11,7 +11,7 @@ const router = Router();
 
 router.get("/sign-up", renderSignUp);
 router.get("/login", renderLogin);
-router.get("/projects/:id", renderSingleBlog);
+router.get("/blogs/:id", renderSingleBlog);
 router.get("/", renderHomePage);
 
 module.exports = router;

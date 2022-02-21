@@ -5,7 +5,7 @@ const createBlog = async (req, res) => {
   try {
     // get the payload
     const payload = getPayloadWithValidFieldsOnly(
-      ["name", "contents", "username"],
+      ["title", "contents", "username"],
       req.body
     );
 
@@ -30,22 +30,22 @@ const createBlog = async (req, res) => {
 };
 
 const updateBlog = async (req, res) => {
-    try {
-      console.log(req.body);
-      const [updatedRows] = await Blog.update(req.body, {
-        where: {
-          id: req.params.id,
-        },
-      });
-      if (updatedRows > 0) {
-        res.status(200).end();
-      } else {
-        res.status(404).end();
-      }
-    } catch (err) {
-      res.sendStatus(500).send(err);
+  try {
+    console.log(req.body);
+    const [updatedRows] = await Blog.update(req.body, {
+      where: {
+        id: req.params.id,
+      },
+    });
+    if (updatedRows > 0) {
+      res.status(200).end();
+    } else {
+      res.status(404).end();
     }
-  };
+  } catch (err) {
+    res.sendStatus(500).send(err);
+  }
+};
 
 const deleteBlog = async (req, res) => {
   try {
@@ -65,8 +65,7 @@ const deleteBlog = async (req, res) => {
 };
 
 module.exports = {
-    createBlog,
-    updateBlog,
-    deleteBlog,
-  };
-  
+  createBlog,
+  updateBlog,
+  deleteBlog,
+};
