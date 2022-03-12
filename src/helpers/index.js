@@ -1,8 +1,6 @@
-const formatDate = (createdAt) => {
-  return `${new Date(createdAt).getDate()}/${
-    new Date(createdAt).getMonth() + 1
-  }/${new Date(createdAt).getFullYear()}`;
-};
+const moment = require("moment");
+
+const formatDate = (date) => moment(date).format("HH:mm ~ M/D/YYYY");
 
 const helpers = {
   formatDate,
