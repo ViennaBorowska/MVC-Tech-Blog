@@ -3,20 +3,14 @@ const path = require("path");
 const express = require("express");
 const exphbs = require("express-handlebars");
 const session = require("express-session");
-const connectSessionSequelize = require("connect-session-sequelize");
-
-//File imports
+const SequelizeStore = require("connect-session-sequelize")(session.Store);
 const routes = require("./routes");
 const connection = require("./config/connection");
 const helpers = require("./helpers");
-
-//Variables
-const PORT = process.env.PORT || 3001;
-
-const SequelizeStore = connectSessionSequelize(session.Store);
-
 const app = express();
 const hbs = exphbs.create({ helpers });
+
+const PORT = process.env.PORT || 3001;
 
 const sessionOptions = {
   secret: "Super secret secret",
@@ -30,15 +24,18 @@ const sessionOptions = {
   }),
 };
 
+// Handlebars set-up
 app.engine("handlebars", hbs.engine);
 app.set("view engine", "handlebars");
 
+//
 app.use(session(sessionOptions));
 app.use(express.static(path.join(__dirname, "public")));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(routes);
 
+// Connect to server & call
 const init = async () => {
   try {
     await connection.sync({ force: false });

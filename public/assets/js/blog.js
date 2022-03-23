@@ -26,4 +26,4 @@ const handleCreateBlog = async (event) => {
   }
 };
 
-createProjectForm.on("submit", handleCreateProject);
+createProjectForm.on("submit", handleCreateBlog);
