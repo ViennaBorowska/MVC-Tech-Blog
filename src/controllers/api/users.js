@@ -1,23 +1,24 @@
-const { getPayloadWithValidFieldsOnly } = require("../../utils");
+// const { getPayloadWithValidFieldsOnly } = require("../../utils");
 const { User } = require("../../models");
 
 const signUp = async (req, res) => {
   try {
-    // get the payload
-    const payload = getPayloadWithValidFieldsOnly(
-      ["username", "password"],
-      req.body
-    );
+    // try {
+    //   // get the payload
+    //   const payload = (["username", "password"], req.body);
 
-    // verify payload
-    if (Object.keys(payload).length !== 2) {
-      // return status 400
-      console.log(`[ERROR]: Failed to sign up | Invalid fields`);
-      return res.status(400).json({ error: "Failed to sign up" });
-    }
+    //   // verify payload
+    //   if (Object.keys(payload).length !== 2) {
+    //     // return status 400
+    //     console.log(`[ERROR]: Failed to sign up | Invalid fields`);
+    //     return res.status(400).json({ error: "Failed to sign up" });
+    //   }
 
     // if ok create user
-    const user = await User.create(payload);
+    const user = await User.create({
+      username: req.body.username,
+      password: req.body.password,
+    });
 
     req.session.save(() => {
       // add loggedIn to session
@@ -39,10 +40,7 @@ const signUp = async (req, res) => {
 const login = async (req, res) => {
   try {
     // get the payload
-    const payload = getPayloadWithValidFieldsOnly(
-      ["username", "password"],
-      req.body
-    );
+    const payload = (["username", "password"], req.body);
 
     // verify payload
     if (Object.keys(payload).length !== 2) {
@@ -51,7 +49,7 @@ const login = async (req, res) => {
       return res.status(400).json({ error: "Failed to login" });
     }
 
-    // if ok get user by email
+    // if ok get user by username
     const user = await User.findOne({
       where: {
         username: payload.username,

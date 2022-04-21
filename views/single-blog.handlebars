@@ -1,4 +1,9 @@
  {{#if loggedIn}}
+  {{> insideNavbar}}
+{{else}}
+  {{> outsideNavbar}}
+{{/if}}
+ {{#if loggedIn}}
     {{#if isMyBlog}}
       <div class="my-2 text-center">
         <button class="btn btn-danger" type="button" id="delete-btn" data-id="{{project.id}}"><i class="far fa-trash-alt"></i><span class="px-2">Delete Project</span></button>
@@ -9,10 +14,10 @@
   <div class="d-flex flex-row justify-content-around flex-wrap">
     <div class="card m-3 text-center" style="width: 100%">
       <div class="card-body">
-        <h5 class="card-title">{{blog.name}}</h5>
+        <h5 class="card-title">{{blog.title}}</h5>
         <h6 class="card-subtitle my-2 text-muted">By {{blog.user.username}}</h6>
         <hr />
-        <p class="card-text">{{blog.description}}</p>
+        <p class="card-text">{{blog.contents}}</p>
       </div>
     </div>
   </div>
